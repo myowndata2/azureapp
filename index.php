@@ -9,5 +9,6 @@ $usuario = "sergio";    // Tu usuario de MySQL
 $password = "Alumno@8"; // Tu contraseña de MySQL
 $basedatos = "sergioortiz"; // Nombre de la base de datos
 
+echo "Acabando..."
 
 ?>
