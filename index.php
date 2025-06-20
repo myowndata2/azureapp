@@ -2,6 +2,4 @@
 
 echo "Bienvenido a la tare 03 del curso de CEFIRE -Mcirosoft Azure-"
 
-echo "Acabando..."
-
 ?>
