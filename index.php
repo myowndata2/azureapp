@@ -25,6 +25,11 @@ if ($resultado->num_rows > 0) {
     echo "No se encontraron resultados en la tabla tarea03";
 }
 
+// Consulta SQL para incrementar en uno el contador.
+$sql = "UPDATE tarea03 SET contador = contador + 1 WHERE my_row_id = 1";
+$resultado = $conexion->query($sql);
+
+
 // Cerrar conexión
 $conexion->close();
 ?>
