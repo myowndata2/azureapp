@@ -1,99 +1,43 @@
 <?php
-echo "Bienvenido a la tare 03 del curso de CEFIRE -Mcirosoft Azure-"
-?>   
+// Mensaje de bienvenida
+echo "Bienvenido a la tarea 03 del curso de CEFIRE - Microsoft Azure\n";
 
-<?php
-// Configuración de la conexión a la base de datos
+// Configuración de la conexión
 $servidor = "mibdsergioortiz.mysql.database.azure.com"; // Servidor MySQL
-?>
-
-<?php
 $usuario = "sergio";    // Tu usuario de MySQL
-?>
-
-<?php
 $password = "Alumno@8"; // Tu contraseña de MySQL
-?>
-
-<?php
 $basedatos = "sergioortiz"; // Nombre de la base de datos
-?>
 
-<?php
-echo "Crear conexión"
-?>   
-
-<?php
 // Crear conexión
+echo "Creando conexión...\n";
 $conexion = new mysqli($servidor, $usuario, $password, $basedatos);
-?>
 
-<?php
-echo "Creada conexión"
-?>   
-
-<?php
-echo "Verificar conexión\n"
-?>   
-
-<?php
 // Verificar conexión
 if ($conexion->connect_error) {
     die("Conexión fallida: " . $conexion->connect_error);
 }
-?>
+echo "Conexión creada correctamente.\n";
 
-<?php
-echo "Verificada la conexión\n"
-?>   
-
-<?php
-echo "Crear consulta\n"
-?>   
-
-<?php
-// Consulta SQL para obtener el valor del contador
+// Consulta para obtener el contador
+echo "Ejecutando consulta SELECT...\n";
 $sql = "SELECT contador FROM tarea03 LIMIT 1";
-?>
-
-<?php
-echo "Ejecutar consulta\n"
-?>   
-
-<?php
 $resultado = $conexion->query($sql);
-?>
 
-<?php
-echo "Ejecutada consulta\n"
-?>   
-
-
-<?php
-if ($resultado->num_rows > 0) {
-    // Obtener el valor del contador
+if ($resultado && $resultado->num_rows > 0) {
     $fila = $resultado->fetch_assoc();
-    echo "El valor del contador es: " . $fila["contador"];
+    echo "El valor del contador es: " . $fila["contador"] . "\n";
+
+    // Incrementar el contador
+    $sql_update = "UPDATE tarea03 SET contador = contador + 1 WHERE id = 1";
+    if ($conexion->query($sql_update) === TRUE) {
+        echo "Contador actualizado correctamente.\n";
+    } else {
+        echo "Error al actualizar el contador: " . $conexion->error . "\n";
+    }
 } else {
-    echo "No se encontraron resultados en la tabla tarea03";
+    echo "No se encontraron resultados en la tabla tarea03\n";
 }
-?>
 
-<?php
-// Consulta SQL para incrementar en uno el contador.
-$sql = "UPDATE tarea03 SET contador = contador + 1 WHERE my_row_id = 1";
-?>
-
-<?php
-$resultado = $conexion->query($sql);
-?>
-
-<?php
 // Cerrar conexión
 $conexion->close();
-?>
-  
-<?php
-echo "Adios a la tare 03 del curso de CEFIRE -Mcirosoft Azure-"
-
-?>
+echo "Adiós de la tarea 03 del curso de CEFIRE - Microsoft Azure\n";
