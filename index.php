@@ -9,7 +9,7 @@ $password = "Alumno@8"; // Tu contraseña de MySQL
 $basedatos = "sergioortiz"; // Nombre de la base de datos
 
 // Crear conexión
-echo "Creando conexión...\n";
+echo "Creando conexión 2...\n";
 $conexion = mysqli_connect($servidor, $usuario, $password, $basedatos);
 
 // Verificar conexión
