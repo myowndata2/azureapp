@@ -10,13 +10,17 @@ $basedatos = "sergioortiz"; // Nombre de la base de datos
 
 // Crear conexión
 echo "Creando conexión...\n";
-$conexion = new mysqli($servidor, $usuario, $password, $basedatos);
+$conexion = mysqli_connect($servidor, $usuario, $password, $basedatos);
 
 // Verificar conexión
-if ($conexion->connect_error) {
-    die("Conexión fallida: " . $conexion->connect_error);
-}
 echo "Conexión creada correctamente.\n";
+
+echo "Verificando la existencia de la conexión.\n";
+
+if (!$conexion) {
+    die("Conexión fallida: " . mysqli_connect_error());
+}
+
 
 // Consulta para obtener el contador
 echo "Ejecutando consulta SELECT...\n";
