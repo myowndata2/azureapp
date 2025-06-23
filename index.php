@@ -20,6 +20,10 @@ $basedatos = "sergioortiz"; // Nombre de la base de datos
 ?>
 
 <?php
+echo "Crear conexión"
+?>   
+
+<?php
 // Crear conexión
 $conexion = new mysqli($servidor, $usuario, $password, $basedatos);
 ?>
