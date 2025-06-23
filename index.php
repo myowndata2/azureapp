@@ -29,20 +29,45 @@ $conexion = new mysqli($servidor, $usuario, $password, $basedatos);
 ?>
 
 <?php
+echo "Creada conexión"
+?>   
+
+<?php
+echo "Verificar conexión\n"
+?>   
+
+<?php
 // Verificar conexión
 if ($conexion->connect_error) {
     die("Conexión fallida: " . $conexion->connect_error);
 }
 ?>
-  
+
+<?php
+echo "Verificada la conexión\n"
+?>   
+
+<?php
+echo "Crear consulta\n"
+?>   
+
 <?php
 // Consulta SQL para obtener el valor del contador
 $sql = "SELECT contador FROM tarea03 LIMIT 1";
 ?>
 
 <?php
+echo "Ejecutar consulta\n"
+?>   
+
+<?php
 $resultado = $conexion->query($sql);
 ?>
+
+<?php
+echo "Ejecutada consulta\n"
+?>   
+
 
 <?php
 if ($resultado->num_rows > 0) {
