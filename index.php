@@ -1,47 +1,24 @@
 <?php
-// Mensaje de bienvenida
-echo "Bienvenido a la tarea 03 del curso de CEFIRE - Microsoft Azure\n";
+$host = 'mibdsergioortiz.mysql.database.azure.com';
+$user = 'sergio';
+$password = 'Alumno@8';
+$dbname = 'sergioortiz';
 
-// Configuración de la conexión
-$servidor = "mibdsergioortiz.mysql.database.azure.com"; // Servidor MySQL
-$usuario = "sergio";    // Tu usuario de MySQL
-$password = "Alumno@8"; // Tu contraseña de MySQL
-$basedatos = "sergioortiz"; // Nombre de la base de datos
+$conn = mysqli_init();
+mysqli_ssl_set($conn, NULL, NULL, "/etc/ssl/cert.pem", NULL, NULL); // Solo si necesitas SSL
+mysqli_real_connect($conn, $host, $user, $password, $dbname, 3306);
 
-// Crear conexión
-echo "Creando conexión 2...\n";
-$conexion = mysqli_connect($servidor, $usuario, $password, $basedatos);
-
-// Verificar conexión
-echo "Conexión creada correctamente.\n";
-
-echo "Verificando la existencia de la conexión.\n";
-
-if (!$conexion) {
-    die("Conexión fallida: " . mysqli_connect_error());
+if (mysqli_connect_errno($conn)) {
+    die('Fallo al conectar a MySQL: ' . mysqli_connect_error());
 }
 
+echo "Conexión correcta a la base de datos.<br>";
 
-// Consulta para obtener el contador
-echo "Ejecutando consulta SELECT...\n";
+// Consulta de ejemplo
 $sql = "SELECT contador FROM tarea03 LIMIT 1";
-$resultado = $conexion->query($sql);
+$result = mysqli_query($conn, $sql);
+$row = mysqli_fetch_assoc($result);
+echo "Contador actual: " . $row['contador'];
 
-if ($resultado && $resultado->num_rows > 0) {
-    $fila = $resultado->fetch_assoc();
-    echo "El valor del contador es: " . $fila["contador"] . "\n";
-
-    // Incrementar el contador
-    $sql_update = "UPDATE tarea03 SET contador = contador + 1 WHERE id = 1";
-    if ($conexion->query($sql_update) === TRUE) {
-        echo "Contador actualizado correctamente.\n";
-    } else {
-        echo "Error al actualizar el contador: " . $conexion->error . "\n";
-    }
-} else {
-    echo "No se encontraron resultados en la tabla tarea03\n";
-}
-
-// Cerrar conexión
-$conexion->close();
-echo "Adiós de la tarea 03 del curso de CEFIRE - Microsoft Azure\n";
+mysqli_close($conn);
+?>
