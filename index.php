@@ -6,6 +6,11 @@ $dbname = "sergioortiz";
 
 echo "Hola mundo";
 
+
+// Crear conexión
+$conexion = new mysqli($servidor, $usuario, $password, $basedatos);
+
+
 echo "Fin de la tarea";
 
 ?>
