@@ -4,7 +4,7 @@ $user = "sergio";
 $password = "Alumno@8";
 $dbname = "sergioortiz";
 
-echo "Hola mundo\n";
+//echo "Hola mundo\n";
 
 // Recuperar variables de entorno
 $dbHost = $host;
@@ -40,7 +40,7 @@ try {
     // Ejemplo: consulta sencilla
     $stmt = $pdo->query('SELECT contador FROM tarea03 LIMIT 1;');
     $fila = $stmt->fetch();
-    echo "\n Conectado correctamente. Contador: " . $fila['contador'];
+    echo "\n Contador: " . $fila['contador'];
     $stmt = $pdo->query('UPDATE tarea03 SET contador = contador + 1 WHERE my_row_id = 1;');
 } catch (PDOException $e) {
     error_log('Error de conexión PDO: ' . $e->getMessage());
@@ -49,6 +49,6 @@ try {
 }
 
 
-echo "\n Fin de la tarea \n";
+//echo "\n Fin de la tarea \n";
 
 ?>
