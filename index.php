@@ -40,15 +40,15 @@ try {
     // Ejemplo: consulta sencilla
     $stmt = $pdo->query('SELECT contador FROM tarea03 LIMIT 1;');
     $fila = $stmt->fetch();
-    echo "\nConectado correctamente. Hora del servidor: " . $fila['contador'];
+    echo "\n Conectado correctamente. Contador: " . $fila['contador'];
     $stmt = $pdo->query('UPDATE tarea03 SET contador = contador + 1 WHERE my_row_id = 1;');
 } catch (PDOException $e) {
     error_log('Error de conexión PDO: ' . $e->getMessage());
-    echo "\nError al conectar con la base de datos: " . htmlspecialchars($e->getMessage());
+    echo "\n Error al conectar con la base de datos: " . htmlspecialchars($e->getMessage());
     exit;
 }
 
 
-echo "\nFin de la tarea\n";
+echo "\n Fin de la tarea \n";
 
 ?>
