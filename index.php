@@ -4,6 +4,8 @@ $user = "sergio";
 $password = "Alumno@8";
 $dbname = "sergioortiz";
 
-echo "Hola mundo"
+echo "Hola mundo";
+
+echo "Fin de la tarea";
 
 ?>
