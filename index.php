@@ -4,13 +4,13 @@ $user = "sergio";
 $password = "Alumno@8";
 $dbname = "sergioortiz";
 
-echo "Hola mundo";
+echo "Hola mundo\n";
 
 
 // Crear conexión
 $conexion = new mysqli($servidor, $usuario, $password, $basedatos);
 
 
-echo "Fin de la tarea";
+echo "Fin de la tarea\n";
 
 ?>
